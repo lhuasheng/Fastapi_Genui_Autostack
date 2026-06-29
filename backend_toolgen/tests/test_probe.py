@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from backend_toolgen.api_probe import (  # noqa: E402
+from api_probe import (  # noqa: E402
     IdPool,
     ProbeConfig,
     _assignments,
@@ -18,7 +18,7 @@ from backend_toolgen.api_probe import (  # noqa: E402
     parse_auth,
     run_probe,
 )
-from backend_toolgen.openapi_to_tools import parse_endpoints  # noqa: E402
+from openapi_to_tools import parse_endpoints  # noqa: E402
 
 HERE = Path(__file__).parent
 SPEC = json.loads((HERE / "fixtures" / "petstore_nested.json").read_text())
