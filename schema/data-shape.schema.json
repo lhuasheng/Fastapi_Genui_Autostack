@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://genui.dev/schema/data-shape.json",
+  "title": "DataShape",
+  "description": "Normalized description of the data an endpoint returns, used to match it to UI blocks.",
+  "type": "object",
+  "required": ["cardinality", "item_fields", "hints"],
+  "properties": {
+    "cardinality": {
+      "enum": ["collection", "object", "scalar"],
+      "description": "collection = array of items; object = single record; scalar = a lone value."
+    },
+    "item_fields": {
+      "type": "object",
+      "description": "Fields of the (item of the) response, keyed by field name.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": ["string", "array"],
+            "items": { "type": "string" },
+            "description": "JSON-ish type, e.g. string|number|boolean|array|object, or a union list."
+          },
+          "role": {
+            "enum": ["id", "label", "measure", "timestamp", "category"],
+            "description": "Semantic role inferred from name/type/value."
+          },
+          "enum": { "type": "array" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "hints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Coarse shape flags: array_of_objects, numeric_series, has_ids, key_value, ..."
+    },
+    "ref_targets": {
+      "type": "array",
+      "description": "Foreign-key style links to other resources (from relationship edges).",
+      "items": {
+        "type": "object",
+        "required": ["field", "resource"],
+        "properties": {
+          "field": { "type": "string" },
+          "resource": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": true
+}

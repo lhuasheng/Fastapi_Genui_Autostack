@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://genui.dev/schema/mapping.json",
+  "title": "Mapping",
+  "description": "Data-shape <-> block compatibility table produced by the bridge.",
+  "type": "object",
+  "required": ["byEndpoint", "byBlock"],
+  "properties": {
+    "byEndpoint": {
+      "type": "object",
+      "description": "Endpoint slug -> the UI blocks that can render its result.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["compatibleBlocks"],
+        "properties": {
+          "dataShape": { "$ref": "https://genui.dev/schema/data-shape.json" },
+          "compatibleBlocks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["kind", "confidence"],
+              "properties": {
+                "kind": { "type": "string" },
+                "confidence": { "enum": ["high", "medium", "low"] },
+                "reason": { "type": "string" },
+                "binding": {
+                  "type": "object",
+                  "description": "block prop -> JSON path into the endpoint response.",
+                  "additionalProperties": { "type": "string" }
+                },
+                "example": {
+                  "description": "A grounded example block payload built from the probe example."
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "byBlock": {
+      "type": "object",
+      "description": "Block kind -> endpoint slugs it can render (inverse index).",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

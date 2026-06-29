@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://genui.dev/schema/a2ui-block.json",
+  "title": "A2UIBlockDefinition",
+  "description": "One entry in the catalog's `blocks` map: an A2UI block kind's contract (kind + flat fields).",
+  "type": "object",
+  "required": ["component", "required", "properties"],
+  "properties": {
+    "component": { "type": "string", "description": "Source React component name." },
+    "file": { "type": "string" },
+    "description": { "type": "string" },
+    "required": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Names of required fields (props) for this block."
+    },
+    "properties": {
+      "type": "object",
+      "description": "Field name -> typed descriptor (type, enum, items, properties, default, description)."
+    },
+    "additionalProperties": { "type": "boolean" },
+    "examples": { "type": "array" }
+  },
+  "additionalProperties": true
+}

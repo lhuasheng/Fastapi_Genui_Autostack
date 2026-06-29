@@ -1,0 +1,20 @@
+{
+  "name": "frontend_uigen",
+  "version": "1.0.0",
+  "description": "Auto-generate an AI-ready GenUI component catalogue from React source (the UI parallel to backend_toolgen's OpenAPI->tools).",
+  "type": "module",
+  "bin": {
+    "gen-catalog": "./gen-catalog.mjs"
+  },
+  "scripts": {
+    "gen": "node gen-catalog.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.25.0"
+  },
+  "devDependencies": {
+    "@genui/schema": "*",
+    "ajv": "^8.20.0"
+  }
+}

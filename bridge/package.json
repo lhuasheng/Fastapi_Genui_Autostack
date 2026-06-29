@@ -1,0 +1,12 @@
+{
+  "name": "@genui/bridge",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Type-driven matcher: pair backend data shapes with the UI blocks that can render them.",
+  "bin": { "gen-mapping": "./gen-mapping.mjs" },
+  "exports": { ".": "./lib/match.mjs" },
+  "scripts": { "test": "node --test" },
+  "dependencies": {
+    "@genui/schema": "*"
+  }
+}

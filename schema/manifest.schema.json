@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://genui.dev/schema/manifest.json",
+  "title": "GenUIManifest",
+  "description": "The merged artifact the A2UI agent loads: data tools + UI blocks + data->block mapping.",
+  "type": "object",
+  "required": ["version", "tools", "a2ui", "mapping"],
+  "properties": {
+    "version": { "type": "string" },
+    "generated": { "type": "string" },
+    "source": { "type": "object" },
+    "tools": {
+      "type": "array",
+      "description": "Anthropic-style tool specs — how the agent fetches data."
+    },
+    "a2ui": {
+      "type": "object",
+      "required": ["blocks"],
+      "properties": {
+        "renderTool": { "type": "object" },
+        "blocks": {
+          "type": "object",
+          "additionalProperties": { "$ref": "https://genui.dev/schema/a2ui-block.json" }
+        },
+        "blockSchema": { "type": "object" },
+        "composition": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "dataShapes": {
+      "type": "object",
+      "additionalProperties": { "$ref": "https://genui.dev/schema/data-shape.json" }
+    },
+    "mapping": { "$ref": "https://genui.dev/schema/mapping.json" },
+    "provenance": { "type": "object" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@genui/schema",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Shared, language-neutral JSON Schemas (source of truth) for the GenUI pipeline.",
+  "exports": {
+    ".": "./validate.mjs",
+    "./*.schema.json": "./*.schema.json"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0"
+  }
+}

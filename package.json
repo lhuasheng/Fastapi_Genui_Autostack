@@ -1,0 +1,16 @@
+{
+  "name": "genui-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Unified GenUI pipeline: write backend functions, get AI data tools + an auto-wired GenUI rendering layer.",
+  "workspaces": [
+    "schema",
+    "frontend_uigen",
+    "bridge",
+    "orchestrator"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces --if-present"
+  }
+}

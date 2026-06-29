@@ -1,0 +1,13 @@
+{
+  "name": "@genui/orchestrator",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "One command: backend tools + frontend catalog + bridge → a single validated GenUI manifest.",
+  "bin": { "genui": "./genui.mjs" },
+  "exports": { "./merge": "./lib/merge.mjs" },
+  "scripts": { "test": "node --test" },
+  "dependencies": {
+    "@genui/bridge": "*",
+    "@genui/schema": "*"
+  }
+}
