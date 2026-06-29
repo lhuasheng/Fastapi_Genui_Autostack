@@ -7,14 +7,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from backend_toolgen.api_probe import (  # noqa: E402
+from api_probe import (  # noqa: E402
     classify_role,
     collection_segments,
     entity_fields,
     infer_static_graph,
     resolve_schema,
 )
-from backend_toolgen.openapi_to_tools import parse_endpoints  # noqa: E402
+from openapi_to_tools import parse_endpoints  # noqa: E402
 
 FIXTURE = Path(__file__).parent / "fixtures" / "petstore_nested.json"
 SPEC = json.loads(FIXTURE.read_text())
